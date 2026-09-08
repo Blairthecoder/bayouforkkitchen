@@ -33,6 +33,24 @@
     }
 }
 
+@media (max-width: 575px) {
+    /* The theme's 70px/80px phone size for this h1 still runs one or
+       two words per line - shrink it so the headline, description
+       and CTAs are readable within the first screen or two instead
+       of a long scroll of giant type. */
+    .hero-wrapper-four .hero-content h1 {
+        font-size: 42px !important;
+        line-height: 50px !important;
+        margin-bottom: 16px;
+    }
+
+    .hero-wrapper-four .hero-content p {
+        font-size: 17px;
+        line-height: 26px;
+        margin-bottom: 22px;
+    }
+}
+
 /*--- Hero photo: bigger, perfectly centered, true circle ---*/
 .hero-wrapper-four .hero-image {
     display: flex;
