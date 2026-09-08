@@ -146,6 +146,34 @@
     background-color: rgba(255, 255, 255, .92);
 }
 
+/* The mobile off-canvas menu panel is white (see style.css), so the
+   dark-bar link color above needs to flip back to dark in there or
+   the links disappear against the white background. */
+@media (max-width: 1199px) {
+    .header-area.page-header .header-navigation .foodix-nav-menu .main-menu > ul > li > a {
+        color: #12100e;
+    }
+
+    .header-area.page-header .header-navigation .foodix-nav-menu .main-menu > ul > li:hover > a,
+    .header-area.page-header .header-navigation .foodix-nav-menu .main-menu > ul > li.active > a {
+        color: #c8102e;
+    }
+}
+
+/* Buttons that wrap onto their own line on narrow screens (hero CTAs,
+   "Order Online" / "Cater My Event", etc.) were landing flush against
+   each other with no gap. Give any stacked pair breathing room and
+   drop the left margin meant for the side-by-side desktop layout. */
+@media (max-width: 575px) {
+    .theme-btn + .theme-btn {
+        margin-top: 15px;
+    }
+
+    .theme-btn.ml-10 {
+        margin-left: 0 !important;
+    }
+}
+
 @media (max-width: 767px) {
     .bf-topbar { padding: 6px 0; }
     .bf-topbar-inner {
@@ -254,6 +282,33 @@
 .bf-areas li i {
     margin-right: 7px;
     color: #c8102e;
+}
+
+@media (max-width: 991px) {
+    .bf-areas {
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+}
+
+/*--- Offer/CTA button group under the service-area chips ---*/
+.offer-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+@media (min-width: 992px) {
+    .offer-cta-group {
+        justify-content: flex-start;
+    }
+}
+
+/* the group's own gap already spaces these; don't double up with the
+   generic stacked-button rule below */
+.offer-cta-group .theme-btn + .theme-btn {
+    margin-top: 0;
 }
 
 /*--- Ordering-info cards ---*/
@@ -408,9 +463,6 @@
     .mb-50 { margin-bottom: 26px !important; }
     .mb-40 { margin-bottom: 22px !important; }
 
-    /* Hero: the theme hard-codes 200px/145px padding with no phone-size step */
-    .hero-wrapper-four { padding: 130px 0 50px !important; }
-
     /* Offcanvas mobile menu: less dead air above the nav links and the CTA */
     .foodix-nav-menu .mobile-logo { margin-bottom: 14px !important; }
     .foodix-nav-menu .nav-button { margin-top: 20px !important; }
@@ -425,6 +477,16 @@
 }
 
 .hero-wrapper-four .theme-btn.style-two:hover {
+    color: #12100e;
+    background-color: #ffffff;
+}
+
+.offer-bg-wrapper .theme-btn.style-two {
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+.offer-bg-wrapper .theme-btn.style-two:hover {
     color: #12100e;
     background-color: #ffffff;
 }
