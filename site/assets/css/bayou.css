@@ -17,7 +17,19 @@
 
 @media (max-width: 1199px) {
     .hero-wrapper-four {
-        padding: 130px 0 60px !important;
+        padding: 90px 0 60px !important;
+    }
+
+    /*--- Content now stacks above the photo on mobile (see order-1/
+          order-2 in index.html); give the photo room to breathe
+          instead of the bottom-margin left over from image-first. ---*/
+    .hero-wrapper-four .hero-image {
+        margin: 40px auto 0;
+    }
+
+    .hero-wrapper-four .hero-content .tag-line {
+        margin-bottom: 10px;
+        display: inline-block;
     }
 }
 
