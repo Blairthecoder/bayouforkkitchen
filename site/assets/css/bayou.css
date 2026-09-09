@@ -610,10 +610,25 @@
 }
 
 /*--- About page story-photo banner: was 130px/125px of padding
-      around one line of text, now a tighter photo strip ---*/
+      around one line of text, now a tighter photo strip. The photo
+      itself is busy (signage, foliage), so a dark overlay sits
+      behind the heading to keep the white text readable. ---*/
 .play-wrapper {
+    position: relative;
     padding-top: 75px;
     padding-bottom: 75px;
+}
+
+.play-wrapper:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .55);
+}
+
+.play-wrapper h2 {
+    position: relative;
+    z-index: 1;
 }
 
 @media (max-width: 767px) {
