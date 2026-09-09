@@ -10,68 +10,148 @@
     --secondary-color: #f0a500;
 }
 
-/*--- Hero: less top/bottom air on desktop too, not just mobile ---*/
-.hero-wrapper-four {
-    padding: 150px 0 90px !important;
+/*=====================================================
+    Full-bleed photo hero (replaces the old circle-photo
+    hero-wrapper-four layout) + shared gold/black/white
+    button styles used by the hero and the new dark menu.
+=====================================================*/
+.bf-hero-banner {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: 92vh;
+    padding: 160px 0 90px;
+    background-position: center;
 }
 
-@media (max-width: 1199px) {
-    .hero-wrapper-four {
-        padding: 90px 0 60px !important;
-    }
+.bf-hero-banner:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(0,0,0,.88) 0%, rgba(0,0,0,.55) 45%, rgba(0,0,0,.25) 75%, rgba(0,0,0,.45) 100%);
+}
 
-    /*--- Content now stacks above the photo on mobile (see order-1/
-          order-2 in index.html); give the photo room to breathe
-          instead of the bottom-margin left over from image-first. ---*/
-    .hero-wrapper-four .hero-image {
-        margin: 40px auto 0;
-    }
+.bf-hero-banner .container {
+    position: relative;
+    z-index: 1;
+}
 
-    .hero-wrapper-four .hero-content .tag-line {
-        margin-bottom: 10px;
-        display: inline-block;
+.bf-hero-banner-content {
+    max-width: 780px;
+}
+
+.bf-hero-banner-content .bf-tag-line {
+    display: inline-block;
+    margin-bottom: 14px;
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #f0a500;
+}
+
+.bf-hero-banner-content h1 {
+    margin-bottom: 22px;
+    font-size: 76px;
+    line-height: 1.05;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.bf-hero-banner-content p {
+    max-width: 620px;
+    margin-bottom: 34px;
+    font-size: 19px;
+    line-height: 30px;
+    color: rgba(255, 255, 255, .85);
+}
+
+@media (max-width: 991px) {
+    .bf-hero-banner-content h1 {
+        font-size: 52px;
     }
 }
 
 @media (max-width: 575px) {
-    /* The theme's 70px/80px phone size for this h1 still runs one or
-       two words per line - shrink it so the headline, description
-       and CTAs are readable within the first screen or two instead
-       of a long scroll of giant type. */
-    .hero-wrapper-four .hero-content h1 {
-        font-size: 42px !important;
-        line-height: 50px !important;
+    .bf-hero-banner {
+        min-height: 0;
+        padding: 120px 0 50px;
+    }
+
+    .bf-hero-banner-content .bf-tag-line {
+        font-size: 16px;
+    }
+
+    .bf-hero-banner-content h1 {
+        font-size: 36px;
         margin-bottom: 16px;
     }
 
-    .hero-wrapper-four .hero-content p {
-        font-size: 17px;
-        line-height: 26px;
-        margin-bottom: 22px;
+    .bf-hero-banner-content p {
+        font-size: 16px;
+        line-height: 25px;
+        margin-bottom: 26px;
     }
 }
 
-/*--- Hero photo: bigger, perfectly centered, true circle ---*/
-.hero-wrapper-four .hero-image {
+/*--- Shared button row (hero CTAs) ---*/
+.bf-btn-row {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.bf-btn {
+    display: inline-flex;
     align-items: center;
+    gap: 10px;
+    padding: 17px 32px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    transition: all .3s ease-out;
+    white-space: nowrap;
 }
 
-.hero-wrapper-four .hero-image .hero-img {
-    max-width: 680px;
-    max-height: 680px;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    box-shadow: 0 30px 70px rgba(0, 0, 0, .45);
+.bf-btn-dark {
+    background: #12100e;
+    border-color: #12100e;
+    color: #ffffff;
 }
 
-@media (max-width: 1199px) {
-    .hero-wrapper-four .hero-image .hero-img {
-        max-width: 460px;
-        max-height: 460px;
-    }
+.bf-btn-dark:hover {
+    background: transparent;
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+.bf-btn-gold {
+    background: #f0a500;
+    border-color: #f0a500;
+    color: #12100e;
+}
+
+.bf-btn-gold:hover {
+    background: transparent;
+    border-color: #f0a500;
+    color: #f0a500;
+}
+
+.bf-btn-outline {
+    background: transparent;
+    border-color: rgba(255, 255, 255, .6);
+    color: #ffffff;
+}
+
+.bf-btn-outline:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #12100e;
 }
 
 /*--- Plate photo (service-area section, replaces the old combo cutout) ---*/
@@ -487,18 +567,8 @@
     .foodix-nav-menu .mobile-logo .site-logo-img { height: 60px !important; }
 }
 
-/*--- Outline button on a dark background (hero) needs light text,
+/*--- Outline button on a dark background needs light text,
       not the template's default dark text ---*/
-.hero-wrapper-four .theme-btn.style-two {
-    color: #ffffff;
-    border-color: #ffffff;
-}
-
-.hero-wrapper-four .theme-btn.style-two:hover {
-    color: #12100e;
-    background-color: #ffffff;
-}
-
 .offer-bg-wrapper .theme-btn.style-two {
     color: #ffffff;
     border-color: #ffffff;
@@ -550,5 +620,173 @@
     .play-wrapper {
         padding-top: 55px;
         padding-bottom: 55px;
+    }
+}
+
+/*=====================================================
+    Dark menu page - black background, one strip per
+    category, photo-grid cards, gold accents throughout
+    (no red) so it reads as its own black/gold/white system.
+=====================================================*/
+.bf-dark-menu {
+    background: #12100e;
+    padding: 60px 0 20px;
+}
+
+.bf-dark-menu .bf-notice.dark {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bf-menu-category {
+    padding: 50px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+.bf-menu-category:last-child {
+    border-bottom: none;
+}
+
+.bf-menu-category-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.bf-menu-category-header h2 {
+    margin: 0;
+    font-size: 34px;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.bf-menu-category-header h2 span {
+    color: #f0a500;
+}
+
+.bf-menu-category-note {
+    margin: -18px 0 30px;
+    max-width: 760px;
+    color: rgba(255, 255, 255, .65);
+    font-size: 15px;
+}
+
+/*--- Photo dish grid ---*/
+.bf-dish-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 22px 18px;
+    margin-bottom: 34px;
+}
+
+.bf-dish-card {
+    text-align: center;
+}
+
+.bf-dish-card .bf-dish-photo {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    background: #1c1a17;
+}
+
+.bf-dish-card .bf-dish-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .4s ease-out;
+}
+
+.bf-dish-card:hover .bf-dish-photo img {
+    transform: scale(1.06);
+}
+
+.bf-dish-card h4 {
+    margin-bottom: 4px;
+    font-size: 17px;
+    letter-spacing: .3px;
+    text-transform: uppercase;
+    color: #f0a500;
+}
+
+.bf-dish-card h4 a {
+    color: inherit;
+}
+
+.bf-dish-card .price {
+    margin: 0;
+    font-size: 14px;
+    color: rgba(255, 255, 255, .6);
+}
+
+/*--- Text-list categories (sides, sauces - no photos, like the
+      reference site's Rice+Noodles / Sides sections) ---*/
+.bf-dish-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px 40px;
+    margin-bottom: 34px;
+    list-style: none;
+    padding: 0;
+}
+
+.bf-dish-list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+    color: rgba(255, 255, 255, .85);
+    font-size: 16px;
+}
+
+.bf-dish-list li span.bf-dish-name {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.bf-dish-list li span.bf-dish-desc {
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, .55);
+}
+
+.bf-dish-list li span.price {
+    flex-shrink: 0;
+    color: rgba(255, 255, 255, .6);
+}
+
+.bf-menu-category-cta {
+    text-align: center;
+}
+
+@media (max-width: 575px) {
+    .bf-dark-menu {
+        padding: 40px 0 10px;
+    }
+
+    .bf-menu-category {
+        padding: 34px 0;
+    }
+
+    .bf-menu-category-header h2 {
+        font-size: 26px;
+    }
+
+    .bf-dish-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px 12px;
+    }
+
+    .bf-dish-card h4 {
+        font-size: 14px;
     }
 }
