@@ -902,3 +902,19 @@
     height: 100%;
     object-fit: cover;
 }
+
+/*--- "Our Promise" homepage section: dark card instead of the
+      default white background. ---*/
+.bf-promise-dark {
+    background: #12100e;
+}
+
+.bf-promise-dark .theme-btn.style-two {
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+.bf-promise-dark .theme-btn.style-two:hover {
+    color: #12100e;
+    background-color: #ffffff;
+}
