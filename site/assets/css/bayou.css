@@ -594,8 +594,24 @@
       the template gives it 210px of padding just to show one line
       of text. Cut it down so it's not a full-screen block. ---*/
 .page-banner .page-bg-wrapper {
+    position: relative;
     padding-top: 55px !important;
     padding-bottom: 55px !important;
+}
+
+/* Every inner page now runs a real food photo behind the title
+   instead of a flat background, so an overlay keeps the white
+   title/breadcrumb readable over whatever's in the shot. */
+.page-banner .page-bg-wrapper:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,.72) 0%, rgba(0,0,0,.55) 100%);
+}
+
+.page-banner .page-banner-content {
+    position: relative;
+    z-index: 1;
 }
 
 .page-banner .page-title {
