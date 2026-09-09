@@ -5,9 +5,33 @@
 /*--- Black & gold theme: the template's --secondary-color (green,
       used sitewide for the cart button, hovers, badges, etc.) is a
       single CSS variable, so redefining it here retints all of it
-      at once instead of hunting down every green usage. ---*/
+      at once instead of hunting down every green usage. Same for
+      --primary-color, which the template ships as red (#BF1109) -
+      that's the Lotus Seafood look this site is deliberately not
+      using, so it becomes gold too. Since both variables now land
+      on the same gold, .theme-btn.style-one below gets its own
+      hover swap to gold/black instead of red/gold. ---*/
 :root {
+    --primary-color: #f0a500;
     --secondary-color: #f0a500;
+}
+
+/* Gold-on-gold has no contrast, so give the primary button dark
+   text at rest and invert to a black fill with gold text on hover
+   (the template's own hover rule would otherwise just swap it to
+   the same gold used at rest, i.e. no visible hover state at all). */
+.theme-btn.style-one {
+    color: #12100e;
+}
+
+.theme-btn.style-one:hover {
+    background-color: #12100e !important;
+    color: #f0a500;
+}
+
+.back-to-top {
+    background-color: #12100e !important;
+    color: #f0a500 !important;
 }
 
 /*--- Catering/contact form (.contact-wrapper): the theme ships an
@@ -269,7 +293,7 @@
 }
 
 .header-area.page-header .header-navigation .main-menu .sub-menu li:hover > a {
-    color: #c8102e;
+    color: #f0a500;
 }
 
 .header-area.page-header .header-navigation .navbar-toggler span {
@@ -286,7 +310,7 @@
 
     .header-area.page-header .header-navigation .foodix-nav-menu .main-menu > ul > li:hover > a,
     .header-area.page-header .header-navigation .foodix-nav-menu .main-menu > ul > li.active > a {
-        color: #c8102e;
+        color: #f0a500;
     }
 }
 
@@ -322,7 +346,7 @@
 .iconic-box.style-five .icon i {
     font-size: 44px;
     line-height: 1;
-    color: #c8102e;
+    color: #f0a500;
 }
 
 /*--- About-section portrait photo ---*/
@@ -373,7 +397,7 @@
     display: block;
     padding: 18px 24px;
     margin-bottom: 40px;
-    border-left: 4px solid #c8102e;
+    border-left: 4px solid #f0a500;
     background: #fbf6ef;
     border-radius: 6px;
     font-size: 15px;
@@ -419,7 +443,7 @@
 
 .bf-areas li i {
     margin-right: 7px;
-    color: #c8102e;
+    color: #f0a500;
 }
 
 @media (max-width: 991px) {
@@ -472,7 +496,7 @@
 
 .bf-info-card h5 i {
     margin-right: 8px;
-    color: #c8102e;
+    color: #f0a500;
 }
 
 .bf-info-card p,
@@ -549,7 +573,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 3px solid #c8102e;
+    border: 3px solid #f0a500;
 }
 
 .bf-team-avatar img {
@@ -561,7 +585,7 @@
 
 .bf-team-avatar i {
     font-size: 46px;
-    color: #c8102e;
+    color: #f0a500;
 }
 
 .bf-team-card h5 {
