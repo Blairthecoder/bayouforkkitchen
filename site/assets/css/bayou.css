@@ -10,6 +10,38 @@
     --secondary-color: #f0a500;
 }
 
+/*--- Catering/contact form (.contact-wrapper): the theme ships an
+      icon-positioning rule for a ".contact-form-wrapper" class that
+      isn't used anywhere in this site, so the calendar icon on the
+      catering form's Event Date field was rendering as a loose inline
+      icon under the input instead of sitting inside it. ---*/
+.contact-wrapper .form_group .icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    pointer-events: none;
+}
+
+/* The theme also pads .contact-wrapper 130px on the bottom below
+   1199px to match a decorative image column that's hidden on these
+   sizes anyway (d-none d-xl-block) - pure dead space on mobile. */
+@media (max-width: 1199px) {
+    .contact-wrapper {
+        padding-bottom: 0 !important;
+    }
+}
+
+/*--- Mobile off-canvas nav: a short link list left a big slab of
+      empty white space at the bottom of the full-height drawer.
+      Center the menu content instead of pinning it to the top. ---*/
+@media (max-width: 1199px) {
+    .header-navigation .foodix-nav-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
 /*=====================================================
     Full-bleed photo hero (replaces the old circle-photo
     hero-wrapper-four layout) + shared gold/black/white
