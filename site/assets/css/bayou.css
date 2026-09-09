@@ -853,3 +853,20 @@
         font-size: 14px;
     }
 }
+
+/*--- Homepage "From the Kitchen" gallery slider: the theme's slides
+      have no fixed height, just width:100% on the <img>, so each
+      slide's height depends on that photo's aspect ratio AND on
+      whether it's finished downloading by the time Slick measures
+      slide heights on init. With 16 real (portrait phone) photos,
+      that race easily leaves a tall blank gap where a slide should
+      be. A fixed aspect-ratio removes the guesswork entirely. ---*/
+.gallery-item.style-two .gallery-img {
+    aspect-ratio: 4 / 3;
+}
+
+.gallery-item.style-two .gallery-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
