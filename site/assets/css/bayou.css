@@ -350,9 +350,17 @@
     width: auto;
 }
 
+/* The logo file itself is a square PNG with a solid black background
+   baked into the art (not real transparency) - it disappears on the
+   header's black bar, but on the white mobile off-canvas menu it
+   showed up as a stray black box. Frame it as an intentional badge
+   there instead of fighting the asset. */
 .mobile-logo .site-logo-img {
     height: 90px;
     width: auto;
+    padding: 10px;
+    border-radius: 12px;
+    background: #12100e;
 }
 
 @media (max-width: 575px) {
