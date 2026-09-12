@@ -1,0 +1,10 @@
+# Force a single canonical host: https://bayouforkkitchen.com
+http://bayouforkkitchen.com/*            https://bayouforkkitchen.com/:splat            301!
+http://www.bayouforkkitchen.com/*        https://bayouforkkitchen.com/:splat            301!
+https://www.bayouforkkitchen.com/*       https://bayouforkkitchen.com/:splat            301!
+
+# Retired generic detail routes -> their parent hub pages
+/blog-details               /blog       301
+/blog-details.html          /blog       301
+/menu-details                /menu       301
+/menu-details.html           /menu       301
