@@ -501,3 +501,32 @@ Version: 1.0
     
 
 })(window.jQuery);
+
+/* DoorDash ordering: click tracking and sticky mobile order bar */
+(function () {
+    var STORE = "https://www.doordash.com/store/bayou-fork-houston-51974027/119334546/";
+
+    function track(link) {
+        if (typeof window.gtag !== "function") return;
+        var href = link.getAttribute("href") || "";
+        window.gtag("event", "doordash_click", {
+            order_type: href.indexOf("pickup=true") > -1 ? "pickup" : "delivery",
+            link_text: (link.textContent || "").replace(/\s+/g, " ").trim().slice(0, 40),
+            page_path: window.location.pathname
+        });
+    }
+
+    document.addEventListener("click", function (e) {
+        var link = e.target.closest ? e.target.closest('a[href*="doordash.com"]') : null;
+        if (link) track(link);
+    });
+
+    if (!document.querySelector(".bf-sticky-order")) {
+        var bar = document.createElement("div");
+        bar.className = "bf-sticky-order";
+        bar.innerHTML =
+            '<a href="' + STORE + '" target="_blank" rel="noopener">Order Delivery</a>' +
+            '<a href="' + STORE + '?pickup=true" target="_blank" rel="noopener">Order Pickup</a>';
+        document.body.appendChild(bar);
+    }
+})();
