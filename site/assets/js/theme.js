@@ -41,19 +41,87 @@ Version: 1.0
         navMenuLi = $('.foodix-nav-menu ul li ul li'),
         closeIcon = $('.navbar-close');
 
-        // navbar toggler
+        // navbar toggler: a real <button> whose aria-expanded mirrors the
+        // drawer state. Below 1200px the drawer is off-canvas, so while it is
+        // closed it is made inert (no tab stops, hidden from assistive tech).
+
+        var overlay = $('.offcanvas__overlay'),
+            drawerQuery = window.matchMedia('(max-width: 1199px)');
+
+        function isOpen() {
+            return navMenu.hasClass('menu-on');
+        }
+
+        function syncInert() {
+            navMenu.prop('inert', drawerQuery.matches && !isOpen());
+        }
+
+        function setMenu(open, focusTarget) {
+            navMenu.toggleClass('menu-on', open);
+            navbarToggler.toggleClass('active', open).attr('aria-expanded', open ? 'true' : 'false');
+            overlay.toggleClass('overlay-open', open);
+            syncInert();
+            if (open && focusTarget !== false) {
+                navMenu.find('a[href]').first().trigger('focus');
+            } else if (!open && focusTarget === 'toggler') {
+                navbarToggler.trigger('focus');
+            }
+        }
 
         navbarToggler.on('click', function() {
-            navbarToggler.toggleClass('active');
-            navMenu.toggleClass('menu-on');
+            setMenu(!isOpen(), isOpen() ? 'toggler' : undefined);
         });
 
         // close icon
 
         closeIcon.on('click', function() {
-            navMenu.removeClass('menu-on');
-            navbarToggler.removeClass('active');
+            setMenu(false, 'toggler');
         });
+
+        // Escape closes the drawer and returns focus to the toggler
+        $(document).on('keydown', function(e) {
+            if (e.key === 'Escape' && isOpen() && drawerQuery.matches) {
+                setMenu(false, 'toggler');
+            }
+        });
+
+        // Keep Tab inside the open drawer (links, then the toggler, then wrap)
+        $(document).on('keydown', function(e) {
+            if (e.key !== 'Tab' || !isOpen() || !drawerQuery.matches) {
+                return;
+            }
+            var stops = navMenu.find('a[href]').add(navbarToggler).filter(':visible'),
+                first = stops.first()[0],
+                last = stops.last()[0];
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        });
+
+        // a click anywhere outside the open drawer closes it
+        $(document).on('click', function(e) {
+            if (isOpen() && drawerQuery.matches && !$(e.target).closest('.foodix-nav-menu, .navbar-toggler').length) {
+                setMenu(false, false);
+            }
+        });
+
+        // resizing past the breakpoint resets the drawer state
+        var onQueryChange = function() {
+            if (!drawerQuery.matches && isOpen()) {
+                setMenu(false, false);
+            }
+            syncInert();
+        };
+        if (drawerQuery.addEventListener) {
+            drawerQuery.addEventListener('change', onQueryChange);
+        } else {
+            drawerQuery.addListener(onQueryChange);
+        }
+        syncInert();
 
         // adds toggle button to li items that have children
 
@@ -90,12 +158,10 @@ Version: 1.0
     $(".cart-button").on("click", function() {
         $(".sidemenu-wrapper-cart").addClass("info-open");
     });
-    $(".navbar-toggler, .offcanvas__overlay,.cart-button").on('click', function (e) {
+    $(".cart-button").on('click', function (e) {
         $(".offcanvas__overlay").toggleClass("overlay-open");
     });
     $(".offcanvas__overlay").on('click', function (e) {
-        $(".navbar-toggler").removeClass("active");
-        $(".foodix-nav-menu").removeClass("menu-on");
         $(".sidemenu-wrapper-cart").removeClass("info-open");
     }); 
     $(".sidemenu-cart-close").on("click", function() {
