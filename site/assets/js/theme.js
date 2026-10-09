@@ -596,3 +596,26 @@ Version: 1.0
         document.body.appendChild(bar);
     }
 })();
+
+
+/* Lazy-load below-the-fold CSS background images (data-bg) */
+(function () {
+    var els = document.querySelectorAll("[data-bg]");
+    if (!els.length) return;
+    function load(el) {
+        var src = el.getAttribute("data-bg");
+        if (!src) return;
+        el.style.backgroundImage = "url(" + src + ")";
+        el.removeAttribute("data-bg");
+    }
+    if (!("IntersectionObserver" in window)) {
+        Array.prototype.forEach.call(els, load);
+        return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+            if (e.isIntersecting) { load(e.target); io.unobserve(e.target); }
+        });
+    }, { rootMargin: "400px 0px" });
+    Array.prototype.forEach.call(els, function (el) { io.observe(el); });
+})();
