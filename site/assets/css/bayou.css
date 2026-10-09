@@ -420,6 +420,7 @@
 
 /*--- Logo image (full badge, never cropped) ---*/
 .site-logo-img {
+    aspect-ratio: 1 / 1;
     display: inline-block;
     height: 72px;
     width: auto;
@@ -1082,4 +1083,9 @@ summary:focus-visible,
         text-decoration-thickness: 2px;
         text-underline-offset: 6px;
     }
+}
+
+/* Images with width/height attributes keep their ratio when CSS constrains the width */
+:where(img[width][height]) {
+    height: auto;
 }
