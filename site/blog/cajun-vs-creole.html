@@ -68,6 +68,7 @@
         </script>
     </head>
     <body>
+        <a class="bf-skip-link" href="#main-content">Skip to main content</a>
         <div class="fd-preloader"><div class="loader"></div></div>
         <div class="bf-topbar">
             <div class="container">
@@ -88,17 +89,17 @@
                             <a href="../index.html" class="brand-logo"><img src="../assets/images/logo/bayou-fork-logo-web.png" alt="Bayou Fork Kitchen" class="site-logo-img"></a>
                         </div>
                         <div class="nav-inner-menu">
-                            <div class="foodix-nav-menu">
+                            <div class="foodix-nav-menu" id="site-nav-menu">
                                 <div class="mobile-logo mb-30 d-block d-xl-none text-center">
                                     <a href="../index.html" class="brand-logo"><img src="../assets/images/logo/bayou-fork-logo-web.png" alt="Bayou Fork Kitchen" class="site-logo-img"></a>
                                 </div>
-                                <nav class="main-menu">
+                                <nav class="main-menu" aria-label="Main">
                                     <ul>
                                         <li class="menu-item"><a href="../index.html">Home</a></li>
                                         <li class="menu-item"><a href="../menu.html">Menu</a></li>
                                         <li class="menu-item"><a href="../about.html">About</a></li>
                                         <li class="menu-item"><a href="https://www.doordash.com/store/bayou-fork-houston-51974027/119334546/" target="_blank" rel="noopener">Order Online</a></li>
-                                        <li class="menu-item"><a href="../blog.html">Blog</a></li>
+                                        <li class="menu-item"><a href="../blog.html" aria-current="true">Blog</a></li>
                                         <li class="menu-item"><a href="../catering.html">Catering</a></li>
                                         <li class="menu-item"><a href="../contact.html">Contact</a></li>
                                     </ul>
@@ -111,13 +112,14 @@
                                 <div class="nav-button d-none d-xl-block">
                                     <a href="https://www.doordash.com/store/bayou-fork-houston-51974027/119334546/" target="_blank" rel="noopener" class="theme-btn style-one">Order Online</a>
                                 </div>
-                                <div class="navbar-toggler"><span></span><span></span><span></span></div>
+                                <button type="button" class="navbar-toggler" aria-label="Menu" aria-controls="site-nav-menu" aria-expanded="false"><span></span><span></span><span></span></button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
+        <main id="main-content" tabindex="-1">
         <section class="page-banner">
             <div class="page-bg-wrapper p-r z-1 bg_cover pt-100 pb-110" style="background-image: url(../assets/images/real/chicken-sausage-pasta.webp);">
                 <div class="container">
@@ -231,6 +233,7 @@
                 </div>
             </div>
         </section>
+        </main>
         <footer class="footer-default p-r z-1">
             <div class="footer-shape f-shape_one scene"><span data-depth=".3"><img src="../assets/images/shape/shape-2.png" alt="shape"></span></div>
             <div class="footer-shape f-shape_two scene"><span data-depth=".4"><img src="../assets/images/shape/shape-3.png" alt="shape"></span></div>

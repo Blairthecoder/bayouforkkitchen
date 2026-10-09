@@ -107,6 +107,7 @@
         </script>
     </head>
     <body class="home-one">
+        <a class="bf-skip-link" href="#main-content">Skip to main content</a>
         <!--====== Start Loader Area ======-->
         <div class="fd-preloader">
             <div class="loader"></div>
@@ -137,15 +138,15 @@
                         </div>
                         <div class="nav-inner-menu">
                             <!--=== Foodix Nav Menu ===-->
-                            <div class="foodix-nav-menu">
+                            <div class="foodix-nav-menu" id="site-nav-menu">
                                 <!--=== Mobile Logo ===-->
                                 <div class="mobile-logo mb-30 d-block d-xl-none text-center">
                                     <a href="index.html" class="brand-logo"><img src="assets/images/logo/bayou-fork-logo-web.png" alt="Bayou Fork Kitchen" class="site-logo-img"></a>
                                 </div>
                                 <!--=== Main Menu ===-->
-                                <nav class="main-menu">
+                                <nav class="main-menu" aria-label="Main">
                                     <ul>
-                                        <li class="menu-item"><a href="index.html">Home</a></li>
+                                        <li class="menu-item"><a href="index.html" aria-current="page">Home</a></li>
                                         <li class="menu-item"><a href="menu.html">Menu</a></li>
                                         <li class="menu-item"><a href="about.html">About</a></li>
                                         <li class="menu-item"><a href="https://www.doordash.com/store/bayou-fork-houston-51974027/119334546/" target="_blank" rel="noopener">Order Online</a></li>
@@ -164,17 +165,18 @@
                                 <div class="nav-button d-none d-xl-block">
                                     <a href="https://www.doordash.com/store/bayou-fork-houston-51974027/119334546/" target="_blank" rel="noopener" class="theme-btn style-one">Order Online</a>
                                 </div>
-                                <div class="navbar-toggler">
+                                <button type="button" class="navbar-toggler" aria-label="Menu" aria-controls="site-nav-menu" aria-expanded="false">
                                     <span></span>
                                     <span></span>
                                     <span></span>
-                                </div>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </header><!--====== End Header Area ======-->
+        <main id="main-content" tabindex="-1">
         <!--====== Start Hero Section ======-->
         <section class="bf-hero-banner bg_cover" style="background-image: url(assets/images/real/hero-blackened-fish.jpg);">
             <div class="container">
@@ -343,6 +345,7 @@
                 </div>
             </div>
         </section><!--====== End Social Section ======-->
+        </main>
         <!--====== Start Footer ======-->
         <footer class="footer-default p-r z-1">
             <div class="footer-shape f-shape_one scene"><span data-depth=".3"><img src="assets/images/shape/shape-2.png" alt="shape" loading="lazy" decoding="async"></span></div>
