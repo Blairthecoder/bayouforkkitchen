@@ -71,6 +71,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://bayouforkkitchen.com/menu/breakfast</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://bayouforkkitchen.com/menu/mardi-gras-pasta</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

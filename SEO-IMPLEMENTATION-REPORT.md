@@ -67,3 +67,32 @@ Not published (lives outside `site/`). Delete or move once reviewed.
 2. Week 2: live SERP/competitor pass for the 10 target queries; add prices to menu.html.
 3. Week 3: real photos for the new dish pages; confirm catering lead times/pricing and add them.
 4. Week 4: 5 editorial/creator pitches; start review-card workflow; use GSC queries to decide on any further pages.
+
+---
+
+## Round 2 (Search Console export, Jul 11–Oct 11 2026, web search; ~1,000 impressions, 33 clicks)
+
+### Verified from the export
+- Homepage is ~90% of impressions. `http://bayouforkkitchen.com/` (695 impr, 20 clicks) outranks the `https://` version (203 impr, 13 clicks): Google still has the http URL in the index/report. Redirect and canonical are in place; confirm "Force HTTPS" in Netlify and request re-indexing of `https://bayouforkkitchen.com/` in Search Console.
+- Demand is mostly local/near-me and "new restaurant" queries ("food near me" 85 impr, "restaurants near me" 81, "new restaurants houston" 20+). Position is already ~4–11; CTR is low, so the Google Business Profile (hours, photos, categories) matters more than site copy here.
+- "breakfast near me" averages position 2.9, "shrimp and grits houston" 10.5, "cajun catering" 69, gumbo/jambalaya/étouffée comparison queries 30–77.
+- No page except the homepage has a click. Mobile is 74% of impressions.
+- Not acted on: "new restaurant" wording (opening date not verified), "black owned" queries (not stated by the owner).
+
+### Implemented from this
+- `/menu/breakfast` (new): five verified breakfast items with prices, hours, Menu schema; linked from menu and homepage FAQ ("Do you serve breakfast?"); in sitemap.
+- Gumbo vs. jambalaya vs. étouffée blog retitled to match query wording.
+
+### Other approved items implemented
+- Removed the 16 missing `magnific-popup` references (no page used the plugin; JS is guarded).
+- Optimized `bayou-fork-logo-web.png` (750 KB → 183 KB, same filename/aspect) and `offer-bg1.jpg` (735 KB → 86 KB). Not changed: `seafood-special-platter.png` (500 KB; quantizing visibly degraded it), `bayou-fork-logo-transparent.png` (2 MB, unreferenced).
+- Breadcrumb schema on about, contact, menu, order-online, blog.
+- Menu schema on `menu.html` (only items with a price already shown on that page).
+- Hours line, Google-review link and cross-links (pasta/étouffée) on all dish pages; wings heading no longer says "wing night".
+- Titles: about, order-online, jambalaya blog; about description.
+- Catering form: empty submit blocked by validation, valid submit sets flag, `catering_submit` fires on thank-you (tested locally with the submit intercepted; Netlify delivery not tested).
+
+### Not done / why
+- Menu prices on `menu.html`: filled from the owner's DoorDash screenshot (Oct 11): Sweet Heat Wings = Wings & A Side $10, Fried Catfish & Shrimp = Catfish & Shrimp Platter $16, Fried Pork Chop = Fried Pork Chop Plate $10. Items not on that DoorDash menu (Big Daddy, crawfish étouffée, gumbo, crawfish fettuccine, ribs, grilled shrimp, po-boy, red beans, sides, meatloaf, lunch/dinner plates, family trays) still say "See DoorDash"; owner to supply prices or confirm they're sold elsewhere.
+- The DoorDash store page still shows hours 8:00am-9:40pm and breakfast/lunch/dinner windows (screenshot); update in DoorDash.
+- Accessibility: all images have alt, one H1 per page, `lang` set, no horizontal overflow at 390px. Contrast and keyboard audits were not run.

@@ -43,8 +43,6 @@
         <link rel="stylesheet" href="assets/vendor/slick/slick.css">
         <!--====== Nice Select css ======-->
         <link rel="stylesheet" href="assets/vendor/nice-select/css/nice-select.css">
-        <!--====== magnific-popup css ======-->
-        <link rel="stylesheet" href="assets/vendor/magnific-popup/dist/magnific-popup.css">
         <!--====== Jquery UI css ======-->
         <link rel="stylesheet" href="assets/vendor/jquery-ui/jquery-ui.min.css">
         <!--====== Animate css ======-->
@@ -55,6 +53,82 @@
         <link rel="stylesheet" href="assets/css/style.css">
         <!--====== Bayou Fork custom css ======-->
         <link rel="stylesheet" href="assets/css/bayou.css">
+        <script type="application/ld+json">
+{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://bayouforkkitchen.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Menu",
+              "item": "https://bayouforkkitchen.com/menu"
+            }
+          ]
+        }
+        </script>
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Menu",
+          "name": "Bayou Fork Kitchen Menu",
+          "url": "https://bayouforkkitchen.com/menu",
+          "inLanguage": "en",
+          "hasMenuSection": [
+            {
+              "@type": "MenuSection",
+              "name": "Specialties and Breakfast & Lunch",
+              "hasMenuItem": [
+                {
+                  "@type": "MenuItem",
+                  "name": "Shrimp & Grits",
+                  "offers": {
+                    "@type": "Offer",
+                    "price": "15.00",
+                    "priceCurrency": "USD"
+                  }
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Mardi Gras Pasta",
+                  "offers": {
+                    "@type": "Offer",
+                    "price": "16.00",
+                    "priceCurrency": "USD"
+                  }
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Catfish Étouffée",
+                  "offers": {
+                    "@type": "Offer",
+                    "price": "16.00",
+                    "priceCurrency": "USD"
+                  }
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Chicken & Waffles",
+                  "offers": {
+                    "@type": "Offer",
+                    "price": "14.00",
+                    "priceCurrency": "USD"
+                  }
+                },
+          {"@type": "MenuItem", "name": "Sweet Heat Wings (Wings & A Side)", "offers": {"@type": "Offer", "price": "10.00", "priceCurrency": "USD"}},
+          {"@type": "MenuItem", "name": "Fried Catfish & Shrimp", "offers": {"@type": "Offer", "price": "16.00", "priceCurrency": "USD"}},
+          {"@type": "MenuItem", "name": "Fried Pork Chop", "offers": {"@type": "Offer", "price": "10.00", "priceCurrency": "USD"}}
+              ]
+            }
+          ]
+        }
+        </script>
     </head>
     <body>
         <a class="bf-skip-link" href="#main-content">Skip to main content</a>
@@ -194,7 +268,7 @@
                         <div class="bf-dish-card">
                             <a class="bf-dish-photo" href="menu/cajun-wings.html"><img src="assets/images/real/sweet-heat-wings.jpg" alt="Sweet Heat Wings, Bayou Fork Kitchen's Cajun wings" loading="lazy"></a>
                             <h4><a href="menu/cajun-wings.html">Sweet Heat Wings</a></h4>
-                            <p class="price bf-dish-price">See DoorDash</p>
+                            <p class="price bf-dish-price">$10.00</p>
                         </div>
                         <div class="bf-dish-card">
                             <span class="bf-dish-photo"><img src="assets/images/stock/fried-ribs.jpg" alt="Fried Ribs, seasoned and fried" loading="lazy" decoding="async"></span>
@@ -209,7 +283,7 @@
                         <div class="bf-dish-card">
                             <span class="bf-dish-photo"><img src="assets/images/real/fried-catfish-shrimp.jpg" alt="Fried catfish and shrimp over fries" loading="lazy"></span>
                             <h4>Fried Catfish &amp; Shrimp</h4>
-                            <p class="price bf-dish-price">See DoorDash</p>
+                            <p class="price bf-dish-price">$16.00</p>
                         </div>
                         <div class="bf-dish-card">
                             <span class="bf-dish-photo"><img src="assets/images/real/grilled-shrimp-fries.jpg" alt="Seasoned grilled shrimp skewers over fries" loading="lazy"></span>
@@ -219,7 +293,7 @@
                         <div class="bf-dish-card">
                             <span class="bf-dish-photo"><img src="assets/images/real/fried-pork-chop.jpg" alt="Fried Pork Chop with dirty rice and baked beans" loading="lazy" decoding="async"></span>
                             <h4>Fried Pork Chop</h4>
-                            <p class="price bf-dish-price">See DoorDash</p>
+                            <p class="price bf-dish-price">$10.00</p>
                         </div>
                         <div class="bf-dish-card">
                             <a class="bf-dish-photo" href="menu/fried-shrimp-po-boy.html"><img src="assets/images/real/shrimp-poboy.jpg" alt="Fried Shrimp Po-Boy on toasted French bread" loading="lazy" decoding="async"></a>
@@ -257,7 +331,7 @@
                     <div class="bf-menu-category-header">
                         <h2>Breakfast &amp; <span>Lunch</span></h2>
                     </div>
-                    <p class="bf-menu-category-note">Daily and weekly specials run all week. Nothing is limited to a certain day, and anything on the menu can be made to order.</p>
+                    <p class="bf-menu-category-note"><a href="menu/breakfast.html">See the breakfast menu</a>. Daily and weekly specials run all week. Nothing is limited to a certain day, and anything on the menu can be made to order.</p>
                     <div class="bf-dish-grid">
                         <div class="bf-dish-card">
                             <span class="bf-dish-photo"><img src="assets/images/real/chicken-waffles.jpg" alt="Chicken and Waffles with berries and syrup" loading="lazy" decoding="async"></span>
@@ -429,7 +503,6 @@
         <!--====== Slick js ======-->
         <script src="assets/vendor/slick/slick.min.js"></script>
         <!--====== Magnific js ======-->
-        <script src="assets/vendor/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
         <!--====== Nice-select js ======-->
         <script src="assets/vendor/nice-select/js/jquery.nice-select.min.js"></script>
         <!--====== Parallax js ======-->
