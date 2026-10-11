@@ -71,6 +71,16 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://bayouforkkitchen.com/menu/mardi-gras-pasta</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bayouforkkitchen.com/menu/catfish-etouffee</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://bayouforkkitchen.com/blog/cajun-vs-creole</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>

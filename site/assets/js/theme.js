@@ -596,3 +596,50 @@ Version: 1.0
         document.body.appendChild(bar);
     }
 })();
+
+/* Conversion events: order_click, delivery_platform_click, call_click, directions_click, menu_view, catering_submit.
+   No personal data is sent. doordash_click above is kept for report continuity. */
+(function () {
+    function send(name, params) {
+        if (typeof window.gtag !== "function") return;
+        params = params || {};
+        params.page_path = window.location.pathname;
+        window.gtag("event", name, params);
+    }
+
+    document.addEventListener("click", function (e) {
+        var link = e.target.closest ? e.target.closest("a[href]") : null;
+        if (!link) return;
+        var href = link.getAttribute("href") || "";
+        var label = (link.textContent || "").replace(/\s+/g, " ").trim().slice(0, 40);
+        if (href.indexOf("doordash.com") > -1) {
+            var type = href.indexOf("pickup=true") > -1 ? "pickup" : "delivery";
+            send("order_click", { order_type: type, link_text: label });
+            send("delivery_platform_click", { platform: "doordash", order_type: type });
+        } else if (href.indexOf("tel:") === 0) {
+            send("call_click", { link_text: label });
+        } else if (href.indexOf("google.com/maps") > -1 || href.indexOf("share.google") > -1) {
+            send("directions_click", { link_text: label });
+        }
+    });
+
+    if (/^\/menu(\.html|\/|$)/.test(window.location.pathname)) {
+        send("menu_view", { menu_page: window.location.pathname.replace(/\.html$/, "") });
+    }
+
+    // Catering form: remember the submit, report it once the thank-you page loads.
+    var cateringForm = document.querySelector('form[name="catering"]');
+    if (cateringForm) {
+        cateringForm.addEventListener("submit", function () {
+            try { sessionStorage.setItem("bf_catering_submit", "1"); } catch (err) {}
+        });
+    }
+    if (/^\/thank-you/.test(window.location.pathname)) {
+        try {
+            if (sessionStorage.getItem("bf_catering_submit") === "1") {
+                sessionStorage.removeItem("bf_catering_submit");
+                send("catering_submit", { form_name: "catering" });
+            }
+        } catch (err) {}
+    }
+})();
