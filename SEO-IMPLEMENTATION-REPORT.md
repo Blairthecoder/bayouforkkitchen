@@ -93,5 +93,6 @@ Not published (lives outside `site/`). Delete or move once reviewed.
 - Catering form: empty submit blocked by validation, valid submit sets flag, `catering_submit` fires on thank-you (tested locally with the submit intercepted; Netlify delivery not tested).
 
 ### Not done / why
-- Menu prices on `menu.html`: no remaining item has a price on the site that matches by name (e.g. "Fried Pork Chop" vs "Fried Pork Chop Plate $10"), so none were filled in; owner to confirm.
+- Menu prices on `menu.html`: filled from the owner's DoorDash screenshot (Oct 11): Sweet Heat Wings = Wings & A Side $10, Fried Catfish & Shrimp = Catfish & Shrimp Platter $16, Fried Pork Chop = Fried Pork Chop Plate $10. Items not on that DoorDash menu (Big Daddy, crawfish étouffée, gumbo, crawfish fettuccine, ribs, grilled shrimp, po-boy, red beans, sides, meatloaf, lunch/dinner plates, family trays) still say "See DoorDash"; owner to supply prices or confirm they're sold elsewhere.
+- The DoorDash store page still shows hours 8:00am-9:40pm and breakfast/lunch/dinner windows (screenshot); update in DoorDash.
 - Accessibility: all images have alt, one H1 per page, `lang` set, no horizontal overflow at 390px. Contrast and keyboard audits were not run.
