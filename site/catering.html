@@ -164,41 +164,56 @@
                                 <input type="hidden" name="subject" value="New catering request from %{formName} (%{submissionId})">
                                 <p class="d-none"><label>Do not fill this out: <input name="bot-field"></label></p>
                                 <div class="row">
+                                    <div class="col-lg-12"><h4 class="form-step"><span>1</span>Your Info</h4></div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <input type="text" class="form_control" placeholder="Your Name *" name="name" required>
+                                            <label class="field-label" for="cf-name">Full Name <span class="req" aria-hidden="true">*</span></label>
+                                            <input type="text" class="form_control" id="cf-name" name="name" placeholder="Your name" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <input type="email" class="form_control" placeholder="Your Email *" name="email" required>
+                                            <label class="field-label" for="cf-email">Email <span class="req" aria-hidden="true">*</span></label>
+                                            <input type="email" class="form_control" id="cf-email" name="email" placeholder="you@example.com" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <input type="tel" class="form_control" placeholder="Phone Number *" name="phone" required>
+                                            <label class="field-label" for="cf-phone">Phone <span class="req" aria-hidden="true">*</span></label>
+                                            <input type="tel" class="form_control" id="cf-phone" name="phone" placeholder="(555) 555-5555" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <input type="text" class="form_control" placeholder="Company / Organization" name="company">
+                                            <label class="field-label" for="cf-company">Company / Organization</label>
+                                            <input type="text" class="form_control" id="cf-company" name="company" placeholder="Optional">
                                         </div>
                                     </div>
+                                    <div class="col-lg-12"><h4 class="form-step"><span>2</span>Event Details</h4></div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <input type="text" class="form_control" placeholder="Event Date *" id="datepicker" name="event_date" required>
+                                            <label class="field-label" for="datepicker">Event Date <span class="req" aria-hidden="true">*</span></label>
+                                            <input type="text" class="form_control" placeholder="Select a date" id="datepicker" name="event_date" required>
                                             <span class="icon"><i class="far fa-calendar-alt"></i></span>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <input type="number" min="10" class="form_control" placeholder="Number of Guests *" name="guests" required>
+                                            <label class="field-label" for="cf-time">Start / Serving Time <span class="req" aria-hidden="true">*</span></label>
+                                            <input type="text" class="form_control" id="cf-time" name="event_time" placeholder="e.g. 6:00 PM" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <select class="wide" name="event_type" required>
-                                                <option value="">Event Type *</option>
+                                            <label class="field-label" for="cf-guests">Number of Guests <span class="req" aria-hidden="true">*</span></label>
+                                            <input type="number" class="form_control" id="cf-guests" name="guests" placeholder="Minimum 10" min="10" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form_group">
+                                            <label class="field-label" for="cf-type">Event Type <span class="req" aria-hidden="true">*</span></label>
+                                            <select class="wide" id="cf-type" name="event_type" required>
+                                                <option value="">Select one</option>
                                                 <option value="Private Event">Private Event</option>
                                                 <option value="Corporate">Corporate / Office</option>
                                                 <option value="Wedding">Wedding</option>
@@ -209,73 +224,104 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="col-lg-12">
+                                        <div class="form_group">
+                                            <label class="field-label" for="cf-venue">Event Address <span class="req" aria-hidden="true">*</span></label>
+                                            <input type="text" class="form_control" id="cf-venue" name="venue" placeholder="Street, city, zip" required>
+                                            <small class="field-hint">Where the food is going. We use it to plan delivery and setup.</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12"><h4 class="form-step"><span>3</span>Service &amp; Budget</h4></div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <select class="wide" name="service_style" required>
-                                                <option value="">Service Style *</option>
+                                            <label class="field-label" for="cf-service">Service Style <span class="req" aria-hidden="true">*</span></label>
+                                            <select class="wide" id="cf-service" name="service_style" required>
+                                                <option value="">Select one</option>
                                                 <option value="Pick-Up Catering">Pick-Up Catering</option>
                                                 <option value="Catering Drop-Off">Catering Drop-Off</option>
-                                                <option value="Full Service Buffet">Full Service Buffet (our staff serves a buffet line)</option>
-                                                <option value="Full Service Plated">Full Service Plated (servers bring plates to guests at tables)</option>
+                                                <option value="Full Service Buffet">Full Service Buffet (staff serves a buffet line)</option>
+                                                <option value="Full Service Plated">Full Service Plated (servers bring plates to tables)</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <input type="text" class="form_control" placeholder="Event Address (street, city, zip) *" name="venue" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form_group">
-                                            <select class="wide" name="budget" required>
-                                                <option value="">Estimated Budget *</option>
+                                            <label class="field-label" for="cf-budget">Estimated Budget <span class="req" aria-hidden="true">*</span></label>
+                                            <select class="wide" id="cf-budget" name="budget" required>
+                                                <option value="">Select one</option>
                                                 <option value="Under 500">Under $500</option>
                                                 <option value="500-1500">$500 - $1,500</option>
                                                 <option value="1500-5000">$1,500 - $5,000</option>
                                                 <option value="5000-10000">$5,000 - $10,000</option>
                                                 <option value="10000+">$10,000+</option>
                                             </select>
+                                            <small class="field-hint">Total for the event, not per person.</small>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-12"><h4 class="form-step"><span>4</span>Anything Else?</h4></div>
+                                    <div class="col-lg-12">
                                         <div class="form_group">
-                                            <input type="text" class="form_control" placeholder="Event Start / Serving Time *" name="event_time" required>
+                                            <label class="field-label" for="cf-details">Menu Preferences &amp; Notes</label>
+                                            <textarea class="form_control" id="cf-details" rows="5" cols="10" placeholder="Favorite dishes, dietary restrictions, allergies, or anything else we should know" name="details"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
-                                        <div class="form_group">
-                                            <textarea class="form_control" rows="5" cols="10" placeholder="Menu preferences, dietary restrictions, allergies, or anything else we should know" name="details"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form_group">
+                                        <div class="form_group form-submit">
+                                            <p class="form-error" id="cf-error" role="alert" hidden>Please choose an event type, service style and estimated budget.</p>
                                             <button type="submit" class="theme-btn style-one">Request A Quote</button>
-                                            <p class="mt-20"><small>* Required. Guest count, event address, service style and budget let us send an accurate quote without a follow-up call.</small></p>
+                                            <p class="mt-20"><small><span class="req">*</span> Required. Guest count, event address, service style and budget let us send an accurate quote without a follow-up call.</small></p>
                                             <p class="mt-10"><small>Catering packages and tray pricing are being finalised. Every quote is built to your event for now.</small></p>
                                         </div>
                                     </div>
                                 </div>
                             </form>
                             <script>
-                                // nice-select hides the native <select>, so browsers cannot show their own "required" prompt
+                                // nice-select hides the native <select>, so browsers cannot show their own "required" prompt for it
                                 (function () {
                                     var form = document.getElementById('order-form');
-                                    form.addEventListener('submit', function (e) {
+                                    var error = document.getElementById('cf-error');
+                                    form.addEventListener('change', function (e) {
+                                        if (e.target.tagName === 'SELECT' && e.target.nextElementSibling) { e.target.nextElementSibling.classList.remove('is-invalid'); }
+                                    });
+                                    // runs on click: native validation would otherwise block the submit before any submit handler fires
+                                    form.querySelector('button[type="submit"]').addEventListener('click', function (e) {
                                         var missing = null;
                                         form.querySelectorAll('select[required]').forEach(function (sel) {
                                             var box = sel.nextElementSibling;
                                             var bad = !sel.value;
-                                            if (box) { box.style.borderColor = bad ? '#c0392b' : ''; }
+                                            if (box) { box.classList.toggle('is-invalid', bad); }
                                             if (bad && !missing) { missing = box || sel; }
                                         });
+                                        error.hidden = !missing;
                                         if (missing) {
                                             e.preventDefault();
-                                            alert('Please choose an event type, service style and estimated budget.');
                                             missing.scrollIntoView({ behavior: 'smooth', block: 'center' });
                                         }
                                     });
                                 })();
                             </script>
+                            <style>
+                                #order-form .form-step { display: flex; align-items: center; gap: 10px; margin: 10px 0 18px; padding-bottom: 10px; border-bottom: 1px solid #e6dfcf; font-size: 20px; text-transform: uppercase; letter-spacing: .5px; }
+                                #order-form .form-step span { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 28px; height: 28px; border-radius: 50%; background: #f0a500; color: #12100e; font-size: 14px; font-weight: 700; }
+                                #order-form .form_group { margin-bottom: 22px; }
+                                #order-form .field-label { display: block; margin-bottom: 6px; font-size: 14px; font-weight: 700; color: #12100e; }
+                                #order-form .req { color: #c0392b; }
+                                #order-form .field-hint { display: block; margin-top: 6px; font-size: 13px; line-height: 1.4; color: #6b645a; }
+                                #order-form .form_control { height: 54px; padding: 12px 18px; font-size: 16px; line-height: 1.4; margin-bottom: 0; border: 1px solid #d9d2c3; border-radius: 10px; }
+                                #order-form textarea.form_control { height: auto; min-height: 130px; }
+                                #order-form .form_group .icon { top: 43px; right: 18px; }
+                                #order-form .nice-select { display: block; float: none; width: 100%; height: 54px; line-height: 52px; padding: 0 40px 0 18px; font-size: 16px; color: #12100e; background: #fff; border: 1px solid #d9d2c3; border-radius: 10px; }
+                                #order-form .nice-select:after { content: ""; display: block; position: absolute; top: 50%; right: 18px; width: 8px; height: 8px; margin-top: -6px; border: 0; border-right: 2px solid #12100e; border-bottom: 2px solid #12100e; background: none; transform: rotate(45deg); transition: transform .15s; pointer-events: none; }
+                                #order-form .nice-select.open:after { transform: rotate(-135deg); margin-top: -2px; }
+                                #order-form .nice-select .current { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+                                #order-form .nice-select .list { width: 100%; max-height: 300px; overflow-y: auto; border-radius: 10px; }
+                                #order-form .nice-select .option { height: auto; min-height: 40px; padding: 9px 18px; line-height: 1.35; white-space: normal; }
+                                #order-form .form_control:focus, #order-form .nice-select.open, #order-form .nice-select:focus { border-color: #f0a500; box-shadow: 0 0 0 3px rgba(240, 165, 0, .2); outline: 0; }
+                                #order-form .nice-select.is-invalid { border-color: #c0392b; }
+                                #order-form .form-error { margin-bottom: 14px; padding: 10px 14px; border-radius: 8px; background: #fbeaea; color: #8f2a20; font-size: 14px; }
+                                #order-form .form-submit .theme-btn { width: 100%; }
+                                @media (min-width: 576px) { #order-form .form-submit .theme-btn { width: auto; } }
+                            </style>
                         </div>
                     </div>
                     <div class="col-xl-6 col-md-12 d-none d-xl-block">
