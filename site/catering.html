@@ -166,17 +166,17 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <input type="text" class="form_control" placeholder="Your Name" name="name" required>
+                                            <input type="text" class="form_control" placeholder="Your Name *" name="name" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <input type="email" class="form_control" placeholder="Your Email" name="email" required>
+                                            <input type="email" class="form_control" placeholder="Your Email *" name="email" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <input type="tel" class="form_control" placeholder="Phone Number" name="phone" required>
+                                            <input type="tel" class="form_control" placeholder="Phone Number *" name="phone" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -186,19 +186,19 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <input type="text" class="form_control" placeholder="Event Date" id="datepicker" name="event_date" required>
+                                            <input type="text" class="form_control" placeholder="Event Date *" id="datepicker" name="event_date" required>
                                             <span class="icon"><i class="far fa-calendar-alt"></i></span>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <input type="number" min="10" class="form_control" placeholder="Number of Guests" name="guests" required>
+                                            <input type="number" min="10" class="form_control" placeholder="Number of Guests *" name="guests" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <select class="wide" name="event_type">
-                                                <option value="">Event Type</option>
+                                            <select class="wide" name="event_type" required>
+                                                <option value="">Event Type *</option>
                                                 <option value="Private Event">Private Event</option>
                                                 <option value="Corporate">Corporate / Office</option>
                                                 <option value="Wedding">Wedding</option>
@@ -211,31 +211,35 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <select class="wide" name="service_style">
-                                                <option value="">Service Style</option>
-                                                <option value="Drop-off">Drop-off Catering</option>
-                                                <option value="Buffet">Buffet with Setup</option>
-                                                <option value="Plated">Full-Service Plated</option>
-                                                <option value="Family Style">Family Style</option>
-                                                <option value="Stations">Live Food Stations</option>
+                                            <select class="wide" name="service_style" required>
+                                                <option value="">Service Style *</option>
+                                                <option value="Pick-Up Catering">Pick-Up Catering</option>
+                                                <option value="Catering Drop-Off">Catering Drop-Off</option>
+                                                <option value="Full Service with Servers">Full Service with Servers</option>
+                                                <option value="Plated Service">Plated Service</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <input type="text" class="form_control" placeholder="Event Venue / Address" name="venue">
+                                            <input type="text" class="form_control" placeholder="Event Address (street, city, zip) *" name="venue" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <select class="wide" name="budget">
-                                                <option value="">Estimated Budget</option>
+                                            <select class="wide" name="budget" required>
+                                                <option value="">Estimated Budget *</option>
                                                 <option value="Under 500">Under $500</option>
                                                 <option value="500-1500">$500 - $1,500</option>
                                                 <option value="1500-5000">$1,500 - $5,000</option>
                                                 <option value="5000-10000">$5,000 - $10,000</option>
                                                 <option value="10000+">$10,000+</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form_group">
+                                            <input type="text" class="form_control" placeholder="Event Start / Serving Time *" name="event_time" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -246,11 +250,32 @@
                                     <div class="col-lg-12">
                                         <div class="form_group">
                                             <button type="submit" class="theme-btn style-one">Request A Quote</button>
-                                            <p class="mt-20"><small>Catering packages and tray pricing are being finalised. Every quote is built to your event for now.</small></p>
+                                            <p class="mt-20"><small>* Required. Guest count, event address, service style and budget let us send an accurate quote without a follow-up call.</small></p>
+                                            <p class="mt-10"><small>Catering packages and tray pricing are being finalised. Every quote is built to your event for now.</small></p>
                                         </div>
                                     </div>
                                 </div>
                             </form>
+                            <script>
+                                // nice-select hides the native <select>, so browsers cannot show their own "required" prompt
+                                (function () {
+                                    var form = document.getElementById('order-form');
+                                    form.addEventListener('submit', function (e) {
+                                        var missing = null;
+                                        form.querySelectorAll('select[required]').forEach(function (sel) {
+                                            var box = sel.nextElementSibling;
+                                            var bad = !sel.value;
+                                            if (box) { box.style.borderColor = bad ? '#c0392b' : ''; }
+                                            if (bad && !missing) { missing = box || sel; }
+                                        });
+                                        if (missing) {
+                                            e.preventDefault();
+                                            alert('Please choose an event type, service style and estimated budget.');
+                                            missing.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                        }
+                                    });
+                                })();
+                            </script>
                         </div>
                     </div>
                     <div class="col-xl-6 col-md-12 d-none d-xl-block">
